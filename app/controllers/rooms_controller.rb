@@ -45,9 +45,9 @@ class RoomsController < ApplicationController
     if @room.update(room_params)
       flash[:notice] = "Updated record"
     else
-      flash[:notice] = "Something went wrong"
+      flash[:alert] = "Something went wrong"
     end
-    redirect_to(fallback_location: request.referer)
+    redirect_back(fallback_location: request.referer)
   end
 
   private
@@ -57,6 +57,6 @@ class RoomsController < ApplicationController
     end
 
     def room_params
-      params.require(:room).permit(:home_type, :room_type, :accommodate, :bed_rooms, :listing_name, :summary, :address, :is_tv, :is_kitchen, :is_air, :is_heating, :is_internet, :price, :active)
+      params.require(:room).permit(:home_type, :room_type, :accommodate, :bed_room, :bath_room, :listing_name, :summary, :address, :is_tv, :is_kitchen, :is_air, :is_heating, :is_internet, :price, :active)
     end
 end
